@@ -13,6 +13,7 @@ const App = () => {
         <AuthContext.Provider value={authState}>
             <NavBar/>
             <Jumbotron/>
+            <VotePanel/>
             <Footer/>
         </AuthContext.Provider>
     </div>)

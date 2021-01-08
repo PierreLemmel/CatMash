@@ -21,6 +21,7 @@ var App = function App() {
             { value: authState },
             React.createElement(NavBar, null),
             React.createElement(Jumbotron, null),
+            React.createElement(VotePanel, null),
             React.createElement(Footer, null)
         )
     );
@@ -93,14 +94,14 @@ var JumbotronBanneer = function JumbotronBanneer() {
 var MainTitle = function MainTitle() {
     return React.createElement(
         "h1",
-        { "class": "main-title" },
+        { className: "main-title" },
         "Cat Mash"
     );
 };
 var TagLine = function TagLine() {
     return React.createElement(
         "p",
-        { "class": "tagline" },
+        { className: "tagline" },
         "Qui sera le chat le plus mignon ?"
     );
 };
@@ -167,4 +168,40 @@ var SignInButton = function SignInButton() {
 };
 var SignOutButton = function SignOutButton() {
     return React.createElement(SignButton, { clickHandler: userSignOut, label: "Se D\xE9connecter" });
+};
+var VotePanel = function VotePanel() {
+    return React.createElement(
+        "section",
+        { className: "row align-items-center justify-content-center" },
+        React.createElement(CatColumn, { imgSrc: "http://24.media.tumblr.com/tumblr_m82woaL5AD1rro1o5o1_1280.jpg", isSelected: true }),
+        React.createElement(CatColumn, { imgSrc: "http://25.media.tumblr.com/tumblr_m4pwa9EXE41r6jd7fo1_500.jpg", isSelected: false }),
+        React.createElement(VoteRow, null)
+    );
+};
+
+var CatColumn = function CatColumn(props) {
+    return React.createElement(
+        "div",
+        { className: "col cat-col" },
+        React.createElement(
+            "div",
+            { className: "cat-img-container p-3 " + (props.isSelected ? "cat-selected" : "cat-unselected") },
+            React.createElement("img", { src: props.imgSrc })
+        )
+    );
+};
+
+var VoteRow = function VoteRow() {
+    return React.createElement(
+        "div",
+        { className: "text-center mt-2" },
+        React.createElement(VoteButton, null)
+    );
+};
+var VoteButton = function VoteButton() {
+    return React.createElement(
+        "button",
+        { className: "btn btn-primary" },
+        "Voter !"
+    );
 };
