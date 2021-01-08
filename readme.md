@@ -11,3 +11,5 @@ https://fireship.io/lessons/firebase-quickstart/
 I used this project as an opportunity to discover:
 - Firebase
 - React.js
+- TypeScript
+- How to Setup a front-end application
