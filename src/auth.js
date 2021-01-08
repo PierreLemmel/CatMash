@@ -1,28 +1,27 @@
-const whenSignedIn = document.getElementById('whenSignedIn');
-const whenSignedOut = document.getElementById('whenSignedOut');
-
-const signInBtn = document.getElementById('signInBtn');
-const signOutBtn = document.getElementById('signOutBtn');
-
-const userDetails = document.getElementById('userDetails');
-
-
 const auth = firebase.auth();
-const authProvider = new firebase.auth.GoogleAuthProvider();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
+const getCurrentUser = () => {
+    const currentUser = auth.currentUser;
 
-signInBtn.onclick = () => auth.signInWithPopup(authProvider);
-signOutBtn.onclick = () => auth.signOut();
-
-
-auth.onAuthStateChanged(user => {
-    if (user) {
-        whenSignedIn.hidden = false;
-        whenSignedOut.hidden = true;
-        userDetails.innerHTML = `Connecté en tant que <em>${user.displayName}</em>`;
-    } else {
-        whenSignedIn.hidden = true;
-        whenSignedOut.hidden = false;
-        userDetails.innerHTML = 'Non connecté';
+    if (currentUser) {
+        return {
+            isLoggedIn: true,
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+        }
     }
-});
+    else {
+        return {
+            isLoggedIn: false
+        }
+    }
+};
+
+const userSignIn = (onSuccess) => auth.signInWithPopup(googleAuthProvider);
+const userSignOut = (onSuccess) => auth.signOut();
+
+let _onAuthStateChanged = user => {};
+firebase.auth().onAuthStateChanged(user => _onAuthStateChanged(user));
+
+const setAuthStateChanged = (callback) => _onAuthStateChanged = callback;

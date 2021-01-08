@@ -1,1 +1,1 @@
-npx babel --watch src --out-file public/app.js --presets react-app/prod
+npx babel --watch src --out-file public/catmash.js --presets react-app/prod

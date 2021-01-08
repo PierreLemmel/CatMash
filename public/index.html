@@ -30,62 +30,12 @@
     </script>
 
     <link href="catmash.css" rel="stylesheet" />
-    <script src="app.js" defer></script>
+    <script src="catmash.js"></script>
+    <script src="index.js" defer></script>
 </head>
 <body>
-    <div>
-    <header class="navbar px-2">
-
-        <div class="vertical-center">
-            <a class="navbar-brand" href="#">
-                <img src="img/maki.png" alt="maki-logo" width=36 height=36/>
-            </a>
-        </div>
-
-        <div class="ms-auto me-2" id="userDetails"></div>
-        <div>
-            <div id="whenSignedOut">
-                <button id="signInBtn" class="btn btn-primary">S'identifier</button>
-            </div>
-            
-            <div id="whenSignedIn" hidden="true">
-                <button id="signOutBtn" class="btn btn-primary">Se déconnecter</button>
-            </div>
-        </div>
-
-    </header>
-
-    <section class="jumbotron text-center">
-        <img src="img/maki.png" alt="cutest cat ever" id="maki-banneer" />
-        <h1 class="main-title">Cat Mash</h1>
-        <p class="tagline">Qui sera le chat le plus mignon ?</p>
-    </section>
-
-    <section class="row align-items-center justify-content-center">
-
-        <div class="col cat-col" id="cat-col-left">
-            <div class="cat-img-container p-3 cat-unselected">
-                <img src="http://24.media.tumblr.com/tumblr_m82woaL5AD1rro1o5o1_1280.jpg" alt="cat-left"/>
-            </div>
-        </div>
-
-        <div class="col cat-col" id="cat-col-right">
-            <div class="cat-img-container p-3 cat-selected">
-                <img src="http://25.media.tumblr.com/tumblr_m4pwa9EXE41r6jd7fo1_500.jpg" alt="cat-left"/>
-            </div>
-        </div>
-
-        <div class="text-center mt-2">
-            <button class="btn btn-primary">Voter !</button>
-        </div>
-
-    </section>
-    
-    <div id="testReact"></div>
-
-    <footer class="text-center mt-2">
-        Réalisé par <a href="www.github.com/PierreLemmel">Pierre Lemmel</a> pour <a href="https://latelier.co">L'Atelier</a>
-    </footer>
+    <div id="root">
+    </div>
 
 </body>
 </html>

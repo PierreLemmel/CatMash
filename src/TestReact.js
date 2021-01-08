@@ -1,1 +1,0 @@
-const TestReact = () => <div>Hello world</div>;
