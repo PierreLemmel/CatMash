@@ -19,10 +19,10 @@ auth.onAuthStateChanged(user => {
     if (user) {
         whenSignedIn.hidden = false;
         whenSignedOut.hidden = true;
-        userDetails.innerHTML = `<div>Hello ${user.displayName}!</div>`;
+        userDetails.innerHTML = `Connecté en tant que <em>${user.displayName}</em>`;
     } else {
         whenSignedIn.hidden = true;
         whenSignedOut.hidden = false;
-        userDetails.innerHTML = '';
+        userDetails.innerHTML = 'Non connecté';
     }
 });
