@@ -11,8 +11,9 @@ const App = () => {
 
     return (<div id="app">
         <AuthContext.Provider value={authState}>
-            <NavBar></NavBar>
-            <Footer></Footer>
+            <NavBar/>
+            <Jumbotron/>
+            <Footer/>
         </AuthContext.Provider>
     </div>)
 };

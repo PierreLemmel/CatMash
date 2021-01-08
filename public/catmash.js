@@ -20,6 +20,7 @@ var App = function App() {
             AuthContext.Provider,
             { value: authState },
             React.createElement(NavBar, null),
+            React.createElement(Jumbotron, null),
             React.createElement(Footer, null)
         )
     );
@@ -74,6 +75,33 @@ var Footer = function Footer() {
             { href: "https://latelier.co" },
             "L'Atelier"
         )
+    );
+};
+var Jumbotron = function Jumbotron() {
+    return React.createElement(
+        "section",
+        { className: "jumbotron text-center" },
+        React.createElement(JumbotronBanneer, null),
+        React.createElement(MainTitle, null),
+        React.createElement(TagLine, null)
+    );
+};
+
+var JumbotronBanneer = function JumbotronBanneer() {
+    return React.createElement("img", { src: "img/maki.png", alt: "cutest cat ever", id: "maki-banneer" });
+};
+var MainTitle = function MainTitle() {
+    return React.createElement(
+        "h1",
+        { "class": "main-title" },
+        "Cat Mash"
+    );
+};
+var TagLine = function TagLine() {
+    return React.createElement(
+        "p",
+        { "class": "tagline" },
+        "Qui sera le chat le plus mignon ?"
     );
 };
 var NavBar = function NavBar() {
