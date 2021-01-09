@@ -40,42 +40,83 @@ var App = function App() {
 };
 "use strict";
 
-var auth = firebase.auth();
-var googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+var _firebase = _interopRequireDefault(require("firebase"));
 
-var getCurrentUser = function getCurrentUser() {
-  var currentUser = auth.currentUser;
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-  if (currentUser) {
-    return {
-      isLoggedIn: true,
-      uid: currentUser.uid,
-      displayName: currentUser.displayName
-    };
-  } else {
-    return {
-      isLoggedIn: false
-    };
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Auth;
+
+(function (_Auth) {
+  var firebaseAuth = _firebase["default"].auth();
+
+  var googleAuthProvider = new _firebase["default"].auth.GoogleAuthProvider();
+
+  function userSignIn() {
+    firebaseAuth.signInWithPopup(googleAuthProvider);
   }
-};
 
-var userSignIn = function userSignIn(onSuccess) {
-  return auth.signInWithPopup(googleAuthProvider);
-};
+  _Auth.userSignIn = userSignIn;
 
-var userSignOut = function userSignOut(onSuccess) {
-  return auth.signOut();
-};
+  function userSignOut() {
+    firebaseAuth.signOut();
+  }
 
-var _onAuthStateChanged = function _onAuthStateChanged(user) {};
+  _Auth.userSignOut = userSignOut;
 
-firebase.auth().onAuthStateChanged(function (user) {
-  return _onAuthStateChanged(user);
-});
+  var _onAuthStateChanged = function _onAuthStateChanged(user) {};
 
-var setAuthStateChanged = function setAuthStateChanged(callback) {
-  return _onAuthStateChanged = callback;
-};
+  _firebase["default"].auth().onAuthStateChanged(function (user) {
+    var appUser = user ? {
+      isLoggedIn: true,
+      uid: user.uid,
+      displayName: user.displayName
+    } : {
+      isLoggedIn: false,
+      uid: null,
+      displayName: null
+    };
+
+    _onAuthStateChanged(appUser);
+  });
+
+  function setAuthStateChanged(callback) {
+    _onAuthStateChanged = callback;
+  }
+
+  _Auth.setAuthStateChanged = setAuthStateChanged;
+
+  var AppUser = /*#__PURE__*/function () {
+    function AppUser(isLoggedIn, uid, displayName) {
+      _classCallCheck(this, AppUser);
+
+      this.isLoggedIn = isLoggedIn;
+      this.uid = uid;
+      this.displayName = displayName;
+    }
+
+    _createClass(AppUser, null, [{
+      key: "LoggedIn",
+      value: function LoggedIn(uid, displayName) {
+        return new AppUser(true, uid, displayName);
+      }
+    }, {
+      key: "LoggedOut",
+      value: function LoggedOut() {
+        return new AppUser(false, null, null);
+      }
+    }]);
+
+    return AppUser;
+  }();
+
+  _Auth.AppUser = AppUser;
+})(Auth || (Auth = {}));
 "use strict";
 
 var Footer = function Footer() {
@@ -171,12 +212,6 @@ var SignOutButton = function SignOutButton() {
     label: "Se D\xE9connecter"
   });
 };
-"use strict";
-
-var foo = {
-  bar: "Hello from a typescript file!"
-};
-console.log(foo.bar);
 "use strict";
 
 var VotePanel = function VotePanel() {
