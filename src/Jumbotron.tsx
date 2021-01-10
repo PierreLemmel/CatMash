@@ -1,4 +1,6 @@
-const Jumbotron = () => <section className="jumbotron text-center">
+import React from 'react';
+
+export const Jumbotron = () => <section className="jumbotron text-center">
     <JumbotronBanneer/>
     <MainTitle />
     <TagLine />

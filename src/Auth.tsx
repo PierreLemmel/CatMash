@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 
 
-module Auth {
+export module Auth {
 
     const firebaseAuth = firebase.auth();
     const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
@@ -29,7 +29,7 @@ module Auth {
         _onAuthStateChanged(appUser);
     });
 
-    export function setAuthStateChanged(callback : AuthStateChangedHandler) {
+    export function onAuthStateChanged(callback : AuthStateChangedHandler) {
         _onAuthStateChanged = callback;
     }
 
@@ -38,7 +38,7 @@ module Auth {
         uid: string | null;
         displayName: string | null;
 
-        private constructor(isLoggedIn: boolean, uid: string, displayName: string) {
+        private constructor(isLoggedIn: boolean, uid: string|null, displayName: string|null) {
             this.isLoggedIn = isLoggedIn;
             this.uid = uid;
             this.displayName = displayName;

@@ -10,6 +10,9 @@ https://fireship.io/lessons/firebase-quickstart/
 
 I used this project as an opportunity to discover:
 - Firebase
+- Firestore
 - React.js
 - TypeScript
-- How to Setup a front-end application
+- Babel
+- Webpack
+- Node.js
