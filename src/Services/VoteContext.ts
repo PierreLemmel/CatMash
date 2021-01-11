@@ -2,36 +2,28 @@ import React from "react";
 import { ImageModel } from "../Models/ImageModel";
 import { Vote } from "../Models/Vote";
 
-export class VoteContextData {
-    readonly proposalId : string;
-    readonly image1 : ImageModel;
-    readonly image2 : ImageModel;
+export class VoteContextObject {
+    readonly initialized : boolean;
+    readonly proposalId : string|null;
+    readonly image1 : ImageModel|null;
+    readonly image2 : ImageModel|null;
     readonly vote : Vote;
 
-    constructor(proposalId : string, image1 : ImageModel, image2 : ImageModel, vote : Vote) {
+    constructor(initialized : boolean, proposalId : string|null, image1 : ImageModel|null, image2 : ImageModel|null, vote : Vote) {
+        this.initialized = initialized;
         this.proposalId = proposalId;
         this.image1 = image1;
         this.image2 = image2;
         this.vote = vote;
     }
 
-    static unitialized() : VoteContextData | null {
-        return null;
+    static uninitialized() : VoteContextObject {
+        return new VoteContextObject(false, null, null, null, Vote.Blank);
     }
 
-    with(fieldsToUpdate : Partial<VoteContextData>) {
-        return {...this, ...fieldsToUpdate};
-    }
-
-    toggleImage1Vote() : VoteContextData {
-        const newVote : Vote = this.vote === Vote.Img1 ? Vote.Blank : Vote.Img1;
-        return this.with({ vote: newVote });
-    }
-
-    toggleImage2Vote(): VoteContextData {
-        const newVote : Vote = this.vote === Vote.Img2 ? Vote.Blank : Vote.Img2;
-        return this.with({ vote: newVote });
+    static initialized(proposalId : string, image1 : ImageModel, image2 : ImageModel){
+        return new VoteContextObject(true, proposalId, image1, image2, Vote.Blank);
     }
 }
 
-export const VoteContext = React.createContext<VoteContextData | null>(null)
+export const VoteContext = React.createContext(VoteContextObject.uninitialized());
