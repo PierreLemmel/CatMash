@@ -34,7 +34,7 @@ type SignButtonProps = {
     clickHandler: Function
 };
 const SignButton = (props: SignButtonProps) => <div>
-    <div><button className="btn btn-primary" onClick={() => props.clickHandler}>{props.label}</button></div>
+    <div><button className="btn btn-primary" onClick={() => props.clickHandler()}>{props.label}</button></div>
 </div>;
 
 const SignInButton = () => <SignButton clickHandler={Auth.userSignIn} label="Se Connecter" />;

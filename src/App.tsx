@@ -10,10 +10,7 @@ export const App = () => {
 
     const [authState, setAuthState] = React.useState(Auth.AppUser.LoggedOut());
 
-    Auth.onAuthStateChanged(user => {    
-        let authState = user ? Auth.AppUser.LoggedIn(user.uid!, user.displayName!) : Auth.AppUser.LoggedOut();
-        setAuthState(authState);
-    });
+    Auth.onAuthStateChanged(user => setAuthState(user));
 
     return (<div id="app">
         <AuthContext.Provider value={authState}>

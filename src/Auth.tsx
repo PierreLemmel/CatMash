@@ -16,16 +16,7 @@ export module Auth {
 
     let _onAuthStateChanged : AuthStateChangedHandler = user => {};
     firebase.auth().onAuthStateChanged(user => {
-        let appUser : AppUser = user ? {
-                isLoggedIn: true,
-                uid: user.uid,
-                displayName: user.displayName
-            } : {
-                isLoggedIn: false,
-                uid: null,
-                displayName: null
-            };
-
+        let appUser : AppUser = user ? AppUser.LoggedIn(user.uid! ,user.displayName!) : AppUser.LoggedOut();
         _onAuthStateChanged(appUser);
     });
 

@@ -73,15 +73,7 @@ var Auth;
   var _onAuthStateChanged = function _onAuthStateChanged(user) {};
 
   external_firebase_default().auth().onAuthStateChanged(function (user) {
-    var appUser = user ? {
-      isLoggedIn: true,
-      uid: user.uid,
-      displayName: user.displayName
-    } : {
-      isLoggedIn: false,
-      uid: null,
-      displayName: null
-    };
+    var appUser = user ? AppUser.LoggedIn(user.uid, user.displayName) : AppUser.LoggedOut();
 
     _onAuthStateChanged(appUser);
   });
@@ -165,7 +157,7 @@ var SignButton = function SignButton(props) {
   return /*#__PURE__*/external_React_default().createElement("div", null, /*#__PURE__*/external_React_default().createElement("div", null, /*#__PURE__*/external_React_default().createElement("button", {
     className: "btn btn-primary",
     onClick: function onClick() {
-      return props.clickHandler;
+      return props.clickHandler();
     }
   }, props.label)));
 };
@@ -283,8 +275,7 @@ var App = function App() {
       setAuthState = _React$useState2[1];
 
   Auth.onAuthStateChanged(function (user) {
-    var authState = user ? Auth.AppUser.LoggedIn(user.uid, user.displayName) : Auth.AppUser.LoggedOut();
-    setAuthState(authState);
+    return setAuthState(user);
   });
   return /*#__PURE__*/external_React_default().createElement("div", {
     id: "app"
