@@ -25,9 +25,9 @@ export module Auth {
     }
 
     export class AppUser {
-        isLoggedIn: boolean;
-        uid: string | null;
-        displayName: string | null;
+        readonly isLoggedIn: boolean;
+        readonly uid: string | null;
+        readonly displayName: string | null;
 
         private constructor(isLoggedIn: boolean, uid: string|null, displayName: string|null) {
             this.isLoggedIn = isLoggedIn;

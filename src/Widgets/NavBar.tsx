@@ -1,5 +1,5 @@
-import {Auth} from "./Auth";
-import {AuthContext} from "./AuthContext";
+import {Auth} from "../Services/Auth";
+import {AuthContext} from "../Services/AuthContext";
 import React from 'react';
 
 export const NavBar = () => <header className="navbar px-2">
@@ -30,8 +30,8 @@ type SignContentUserDetailProps = {
 const SignContentUserDetail = (props: SignContentUserDetailProps) => <div className="ms-auto me-2">{props.text}</div>
 
 type SignButtonProps = {
-    label: string,
-    clickHandler: Function
+    readonly label: string,
+    readonly clickHandler: Function
 };
 const SignButton = (props: SignButtonProps) => <div>
     <div><button className="btn btn-primary" onClick={() => props.clickHandler()}>{props.label}</button></div>
