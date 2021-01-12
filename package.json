@@ -41,7 +41,7 @@
   },
   "scripts": {
     "dev": "webpack --watch",
-    "start": "firebase serve",
+    "serve": "firebase serve",
     "deploy": "firebase deploy",
     "analyze": "webpack --json > webpack.analysis.json",
     "pack": "webpack"

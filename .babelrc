@@ -1,9 +1,5 @@
 {
     "presets": [
-        // ["@babel/preset-env", {
-        //     // "modules": false,
-        //     "targets": "defaults"
-        // }],
         "@babel/preset-env",
         "@babel/preset-typescript",
         "@babel/preset-react"

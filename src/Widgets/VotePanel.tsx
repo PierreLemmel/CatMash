@@ -17,7 +17,7 @@ export const VotePanel = () => {
         auth => {
 
             const waitForKittens = () => {
-                Api.getProposal(auth.uid).then(proposal => {
+                Api.requireProposal(auth.uid).then(proposal => {
                     const newState = VoteContextObject.initialized(proposal.proposalId, proposal.img1, proposal.img2);
                     setState({ vote: newState, busy:true });
                 });

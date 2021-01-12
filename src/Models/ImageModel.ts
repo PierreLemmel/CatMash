@@ -1,4 +1,4 @@
-export class ImageModel {
+export class CatModel {
     readonly id : string;
     readonly src : string;
 

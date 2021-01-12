@@ -1,15 +1,15 @@
 import React from "react";
-import { ImageModel } from "../Models/ImageModel";
+import { CatModel } from "../Models/ImageModel";
 import { Vote } from "../Models/Vote";
 
 export class VoteContextObject {
     readonly initialized : boolean;
     readonly proposalId : string|null;
-    readonly image1 : ImageModel|null;
-    readonly image2 : ImageModel|null;
+    readonly image1 : CatModel|null;
+    readonly image2 : CatModel|null;
     readonly vote : Vote;
 
-    constructor(initialized : boolean, proposalId : string|null, image1 : ImageModel|null, image2 : ImageModel|null, vote : Vote) {
+    constructor(initialized : boolean, proposalId : string|null, image1 : CatModel|null, image2 : CatModel|null, vote : Vote) {
         this.initialized = initialized;
         this.proposalId = proposalId;
         this.image1 = image1;
@@ -21,7 +21,7 @@ export class VoteContextObject {
         return new VoteContextObject(false, null, null, null, Vote.Blank);
     }
 
-    static initialized(proposalId : string, image1 : ImageModel, image2 : ImageModel){
+    static initialized(proposalId : string, image1 : CatModel, image2 : CatModel){
         return new VoteContextObject(true, proposalId, image1, image2, Vote.Blank);
     }
 }

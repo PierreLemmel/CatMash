@@ -1,12 +1,12 @@
-import { ImageModel } from "./ImageModel";
+import { CatModel } from "./ImageModel";
 
 export class ProposalModel {
     readonly proposalId: string;
     readonly userId: string | null;
-    readonly img1: ImageModel;
-    readonly img2: ImageModel;
+    readonly img1: CatModel;
+    readonly img2: CatModel;
 
-    constructor(proposalId: string, userId: string | null,  img1: ImageModel, img2: ImageModel) {
+    constructor(proposalId: string, userId: string | null,  img1: CatModel, img2: CatModel) {
         this.proposalId = proposalId;
         this.userId = userId;
         this.img1 = img1;
