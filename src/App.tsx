@@ -3,7 +3,7 @@ import { Auth } from './Services/Auth';
 import { AuthContext } from './Services/AuthContext';
 import { NavBar } from './Widgets/NavBar';
 import { Jumbotron } from './Widgets/Jumbotron';
-import { VotePanel } from './Widgets/VotePanel';
+import { MainPanel } from './Widgets/MainPanel';
 import { Footer } from './Widgets/Footer';
 
 export const App = () => {
@@ -16,7 +16,7 @@ export const App = () => {
         <AuthContext.Provider value={authState}>
             <NavBar/>
             <Jumbotron/>
-            <VotePanel/>
+            <MainPanel/>
             <Footer/>
         </AuthContext.Provider>
     </div>)

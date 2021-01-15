@@ -32,6 +32,7 @@ module.exports = {
     externals: {
         'react': 'React', 
         'react-dom' : 'ReactDOM',
+        'react-router-dom': 'ReactRouterDOM',
         'firebase': 'firebase',
         'scheduler': 'scheduler',
     },

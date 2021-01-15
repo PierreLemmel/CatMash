@@ -14,16 +14,6 @@ export module Auth {
         firebaseAuth.signOut();
     }
 
-    let _onAuthStateChanged : AuthStateChangedHandler = user => {};
-    firebase.auth().onAuthStateChanged(user => {
-        let appUser : AppUser = user ? AppUser.LoggedIn(user.uid! ,user.displayName!) : AppUser.LoggedOut();
-        _onAuthStateChanged(appUser);
-    });
-
-    export function onAuthStateChanged(callback : AuthStateChangedHandler) {
-        _onAuthStateChanged = callback;
-    }
-
     export class AppUser {
         readonly isLoggedIn: boolean;
         readonly uid: string | null;
@@ -44,6 +34,22 @@ export module Auth {
         }
     }
     
+
+    let _onAuthStateChanged : AuthStateChangedHandler = user => {};
+    let _appUser : AppUser = AppUser.LoggedOut();
+    firebase.auth().onAuthStateChanged(user => {
+        let appUser : AppUser = user ? AppUser.LoggedIn(user.uid! ,user.displayName!) : AppUser.LoggedOut();
+        _onAuthStateChanged(appUser);
+    });
+
+    export function getCurrentUser() : AppUser{
+        return _appUser;
+    }
+
+    export function onAuthStateChanged(callback : AuthStateChangedHandler) {
+        _onAuthStateChanged = callback;
+    }
+
     export interface AuthStateChangedHandler {
         (user: AppUser) : void;
     }

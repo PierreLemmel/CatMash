@@ -15,14 +15,14 @@
   },
   "homepage": "https://github.com/PierreLemmel/CatMash#readme",
   "dependencies": {
-    "@types/faker": "^5.1.5",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "@types/uuid": "^8.3.0",
+    "@types/react-router-dom": "^5.1.7",
     "chokidar": "^3.5.0",
     "firebase": "^8.2.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
   },
   "scripts": {
     "dev": "webpack --watch",
-    "serve": "firebase serve",
+    "serve": "firebase serve --port=8080",
     "deploy": "firebase deploy",
     "analyze": "webpack --json > webpack.analysis.json",
     "pack": "webpack"

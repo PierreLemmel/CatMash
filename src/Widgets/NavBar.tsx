@@ -1,6 +1,7 @@
 import {Auth} from "../Services/Auth";
 import {AuthContext} from "../Services/AuthContext";
 import React from 'react';
+import { Link } from "react-router-dom";
 
 export const NavBar = () => <header className="navbar px-2">
     <NavBarLogo imgWidth={36} imgHeight={36} />
@@ -19,9 +20,9 @@ type NavBarLogoProps = {
     imgHeight: number
 };
 const NavBarLogo = (props: NavBarLogoProps) => <div className="vertical-center">
-    <a className="navbar-brand" href="#">
+    <Link to='/' className="navbar-brand">
         <img src="img/maki.png" alt="maki-logo" width={props.imgWidth} height={props.imgHeight}/>
-    </a>
+    </Link>
 </div>;
 
 type SignContentUserDetailProps = {
